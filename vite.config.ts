@@ -19,7 +19,7 @@ export default defineConfig({
    * @see https://cn.vitejs.dev/config/#server-proxy
    */
   server: {
-    port: 3000,
+    port: 3000
     // proxy: {
     //   '/devapi': {
     //     target: 'http://192.168.10.198',
@@ -75,8 +75,8 @@ export default defineConfig({
       '~@less': resolve('src/assets/less'),
       '~@libs': resolve('src/libs'),
       '~@cp': resolve('src/components'),
-      '~@views': resolve('src/views'),
-    },
+      '~@views': resolve('src/views')
+    }
   },
 
   css: {
@@ -108,10 +108,10 @@ export default defineConfig({
         javascriptEnabled: true,
         modifyVars: {
           'primary-color': '#1890ff',
-          hack: `true; @import '@less/config.less'`,
-        },
-      },
-    },
+          hack: `true; @import '@less/config.less'`
+        }
+      }
+    }
   },
 
   plugins: [
@@ -125,7 +125,7 @@ export default defineConfig({
       dirs: [resolve('src/components')],
       extensions: ['vue', 'ts'],
       deep: true,
-      dts: false,
+      dts: false
     }),
 
     /**
@@ -134,6 +134,9 @@ export default defineConfig({
      */
     banner(
       `/**\n * name: ${pkg.name}\n * version: v${pkg.version}\n * description: v${pkg.description}\n * author: ${pkg.author}\n */`
-    ),
+    )
   ],
+  alias: {
+    path: 'path-browserify'
+  }
 })

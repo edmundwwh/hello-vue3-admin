@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
+import Layout from '@/layout/index.vue'
 
 /**
  * 路由配置
@@ -8,13 +9,46 @@ const routes: RouteRecordRaw[] = [
   /**
    * 首页
    */
+
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '@views/home.vue'),
+    component: Layout,
+    redirect: 'order',
+    children: [
+      {
+        path: 'order',
+        name: 'order',
+        meta: { title: '订单列表' },
+        component: () =>
+          import(/* webpackChunkName: "home" */ '@views/home.vue')
+      },
+      {
+        path: 'user',
+        name: 'user',
+        meta: { title: '用户列表' },
+        component: () =>
+          import(/* webpackChunkName: "home" */ '@views/home.vue')
+      }
+    ]
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: Layout,
     meta: {
-      title: 'Home'
-    }
+      title: 'Login',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'download',
+        component: () =>
+          import(/* webpackChunkName: "zip" */ '@views/home.vue'),
+        name: 'ExportZip',
+        meta: { title: 'exportZip' }
+      }
+    ]
   },
   {
     path: '/login',
@@ -25,22 +59,6 @@ const routes: RouteRecordRaw[] = [
       title: 'Login'
     }
   }
-  /**
-   * 子路由示例
-   */
-  // {
-  //   path: '/foo',
-  //   name: 'foo',
-  //   component: () =>
-  //     import(/* webpackChunkName: "foo" */ '@cp/TransferStation.vue'),
-  //   meta: {
-  //     title: 'Foo',
-  //   },
-  //   redirect: {
-  //     name: 'bar',
-  //   },
-  //   children: [],
-  // },
 ]
 
 export default routes

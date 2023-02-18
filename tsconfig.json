@@ -12,6 +12,7 @@
       "node",
       "element-plus/global",
     ],
+    "noImplicitAny": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "suppressImplicitAnyIndexErrors": true,
@@ -43,7 +44,13 @@
       ],
       "@plugins/*": [
         "src/plugins/*"
-      ]
+      ],
+      "@layout/*": [
+        "src/layout/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
     },
     "lib": ["esnext", "dom", "dom.iterable"]
   },
